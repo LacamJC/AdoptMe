@@ -11,6 +11,15 @@ CREATE TABLE especies(
     nome TEXT NOT NULL UNIQUE
 );
 
+CREATE TABLE atributos(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nome TEXT NOT NULL UNIQUE
+);
+
+
 INSERT INTO especies(nome)VALUES('Gato');
 INSERT INTO especies(nome) VALUES('Cachorro');
 INSERT INTO especies(nome) VALUES('Peixe');
+INSERT INTO atributos(nome) VALUES('Vacinado');
+INSERT INTO atributos(nome) VALUES('Castrado');
+INSERT INTO atributos(nome) VALUES('Vermifugado');

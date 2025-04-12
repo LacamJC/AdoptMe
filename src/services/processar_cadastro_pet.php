@@ -7,6 +7,7 @@ try{
     Pet::setConnection($conn);
 
 
+    $atributos = $_POST["atributos"];
     $nome = $_POST["nome_pet"];
     $idade = $_POST["idade_pet"];
     $especie = $_POST["especie_pet"];
@@ -15,8 +16,6 @@ try{
     $pet->idade = $idade;
     $pet->id_especie = $especie;
 
-    
-    // $pet->drop();
     $pet->save();
     header("location: http://localhost/pacoca/src/views/todos.php");
     

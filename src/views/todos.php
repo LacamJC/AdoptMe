@@ -12,12 +12,15 @@
 <?php
 require_once '../classes/Layout.php';
 require_once '../classes/Pet.php';
-
+require_once '../classes/Especie.php';
+require_once '../classes/Atributo.php';
 try {
     $conn = new PDO('sqlite:../database/gerenciador.db');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     Pet::setConnection($conn);
+    Especie::setConnection($conn);
+    Atributo::setConnection($conn);
 
     $pets = Pet::all();
 } catch (Exception $e) {
@@ -31,7 +34,8 @@ try {
     <div class="d-flex justify-content-between container flex-wrap">
         <?php
         foreach ($pets as $pet) {
-           Layout::Card($pet);
+           Layout::Card($pet, Especie::getEspecie($pet->id_especie));
+           
         }
 
         ?>

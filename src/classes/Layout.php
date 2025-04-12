@@ -1,6 +1,5 @@
 <?php
 
-// require_once './Layout/Header.php';
 
 class Layout
 {
@@ -20,7 +19,7 @@ class Layout
         <li><a href='../../index.php' class='nav-link px-2 link-secondary'>Home</a></li>
         <li><a href='./cadastro_pet.php' class='nav-link px-2'>Cadastro pet</a></li>
         <li><a href='./todos.php' class='nav-link px-2'>Ver pets</a></li>
-
+        <li><a href='./cadastro_usuario.php' class='nav-link px-2'>Cadastrar usuario</a></li>
         <li><a href='#' class='nav-link px-2'>Apoie-nos</a></li>
     </ul>
 
@@ -29,15 +28,23 @@ class Layout
 ");
     }
 
-    public static function Card(Pet $pet)
+    public static function Card(Pet $pet, $especie)
     {
+        $especie = Especie::getEspecie($pet->id_especie);
+       
         echo "
     <div class='card my-5' style='width: 18rem;'>
         <img src='https://placehold.co/286x180' class='card-img-top' alt='...'>
         <div class='card-body'>
             <p class='card-text'>Nome: {$pet->nome}</p>
             <p class='card-text'>Idade: {$pet->idade}</p>
+            <p class='card-text'>Especie: " . $especie->nome  . " </p>
         </div>
     </div>";
+
+        // var_dump($especie);
+      
     }
+
+  
 }
